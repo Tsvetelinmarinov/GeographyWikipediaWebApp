@@ -2,9 +2,12 @@
  * Entry point of the application.
  */
 
+using Geography.Data.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IRepository, GeographyRepository>();
 
 var app = builder.Build();
 
