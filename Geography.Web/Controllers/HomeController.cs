@@ -1,4 +1,4 @@
-using Geography.Web.ViewModels;
+using Geography.Services.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

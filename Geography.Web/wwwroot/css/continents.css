@@ -1,0 +1,149 @@
+/* Continents Page Styles */
+
+.continents-container {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.continents-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+    animation: slideDown 0.6s ease-out;
+}
+
+.continents-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.continents-header p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.table-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.6s ease-out;
+}
+
+.continents-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+.continents-table thead {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.continents-table th {
+    padding: 20px;
+    font-weight: 700;
+    text-align: left;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.continents-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.continents-table tbody tr:hover {
+    background-color: #f8f9ff;
+    transform: scale(1.01);
+    box-shadow: inset 0 0 20px rgba(102, 126, 234, 0.1);
+}
+
+.continents-table td {
+    padding: 18px 20px;
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.continent-code {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.continent-name {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 1rem;
+}
+
+.country-count {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.continents-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.no-data {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6b7280;
+}
+
+.no-data-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .continents-header h1 {
+        font-size: 2rem;
+    }
+
+    .continents-table th,
+    .continents-table td {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,51 @@
+﻿@using Geography.Services.ViewModels
+@model IEnumerable<ContinentViewModel>
+@{
+    ViewData["Title"] = "Continents";
+}
+
+<link href="~/css/continents.css" rel="stylesheet" />
+
+<div class="continents-container">
+    <div class="continents-header">
+        <h1>🌍 Our Continents</h1>
+        <p>Explore the seven magnificent continents of our planet. Discover unique geography, diverse cultures, and fascinating countries across the globe.</p>
+    </div>
+
+    <div class="table-wrapper">
+        @if (Model != null && Model.Any())
+        {
+            <table class="continents-table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Continent Name</th>
+                        <th>Countries</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var continent in Model)
+                    {
+                        <tr>
+                            <td class="continent-code">@continent.ContinentCode</td>
+                            <td class="continent-name">@continent.ContinentName</td>
+                            <td>
+                                <span class="country-count">
+                                    @continent.Countries.Count @(continent.Countries.Count == 1 ? "Country" : "Countries")
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="no-data">
+                <div class="no-data-icon">📭</div>
+                <h3>No Continents Found</h3>
+                <p>There are currently no continents in the database.</p>
+            </div>
+        }
+    </div>
+</div>

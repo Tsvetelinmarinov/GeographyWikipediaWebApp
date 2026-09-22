@@ -4,23 +4,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.Repository
 {
-    public class GeographyRepository : IRepository
+    public class GeographyRepository(GeographyContext dbContext) : IRepository
     {
-        // Db context instance.
-        private readonly GeographyContext _dbContext;
-
-
         public IEnumerable<Continent> GetAllContinents()
         {
-            return this._dbContext
+            return dbContext
                 .Continents
                 .AsNoTracking()
+                .Include((continent) => continent.Countries)
                 .OrderBy((continent) => continent.ContinentCode);
         }
 
         public void Dispose()
         {
-            this._dbContext.Dispose();
+            GC.SuppressFinalize(this);
+            dbContext.Dispose();
         }
     }
 }
