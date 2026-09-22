@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Geography.Services\Geography.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>
