@@ -35,7 +35,7 @@
                                 </span>
                             </td>
                             <td class="action-cell">
-                                <a href="#" id="btnViewCountries" class="btn btn-outline-info">View Countries</a>
+                                <a asp-controller="Continents" asp-action="CountriesList" asp-route-code="@continent.ContinentCode" id="btnViewCountries" class="btn btn-outline-info">View Countries</a>
                             </td>
                         </tr>
                     }
