@@ -114,6 +114,10 @@
     opacity: 0.5;
 }
 
+#btnViewCountries:hover{
+    color:aliceblue;
+}
+
 @keyframes slideDown {
     from {
         opacity: 0;

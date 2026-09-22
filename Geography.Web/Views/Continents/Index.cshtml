@@ -21,6 +21,7 @@
                         <th>Code</th>
                         <th>Continent Name</th>
                         <th>Countries</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,9 @@
                                 <span class="country-count">
                                     @continent.Countries.Count @(continent.Countries.Count == 1 ? "Country" : "Countries")
                                 </span>
+                            </td>
+                            <td class="action-cell">
+                                <a href="#" id="btnViewCountries" class="btn btn-outline-info">View Countries</a>
                             </td>
                         </tr>
                     }
