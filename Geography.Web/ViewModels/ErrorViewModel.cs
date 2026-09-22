@@ -1,4 +1,4 @@
-namespace Geography.Web.Models
+namespace Geography.Web.ViewModels
 {
     public class ErrorViewModel
     {
