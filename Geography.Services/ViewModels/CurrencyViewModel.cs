@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Geography.Web.ViewModels;
+namespace Geography.Services.ViewModels;
 
 public partial class CurrencyViewModel
 {
