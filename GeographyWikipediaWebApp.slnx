@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="Geography.Data/Geography.Data.csproj" />
+  <Project Path="Geography.Services/Geography.Services.csproj" />
+  <Project Path="Geography.Web/Geography.Web.csproj" />
+</Solution>
