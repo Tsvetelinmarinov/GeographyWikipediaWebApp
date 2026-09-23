@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using Geography.Services.ViewModels;
+using Geography.Data.ViewModels;
 using Geography.Data.Models;
 
-namespace Geography.Services.AutoMapper
+namespace Geography.Data.AutoMapper
 {
     public class Mapper : Profile
     {
         public Mapper()
         {
-            CreateMap<Geography.Data.Models.Continent, ContinentViewModel>();
-            CreateMap<ContinentViewModel, Data.Models.Continent>();
+            CreateMap<Continent, ContinentViewModel>();
+            CreateMap<ContinentViewModel, Continent>();
 
             CreateMap<Country, CountryViewModel>();
             CreateMap<CountryViewModel, Country>();
