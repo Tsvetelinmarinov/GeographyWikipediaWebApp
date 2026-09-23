@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.Models;
 
+/// <summary>
+/// Represents a named peak that belongs to a mountain range.
+/// </summary>
 public partial class Peak
 {
     [Key]
@@ -18,6 +21,7 @@ public partial class Peak
 
     public int MountainId { get; set; }
 
+    /// <summary>The mountain range that contains this peak.</summary>
     [ForeignKey("MountainId")]
     [InverseProperty("Peaks")]
     public virtual Mountain Mountain { get; set; } = null!;

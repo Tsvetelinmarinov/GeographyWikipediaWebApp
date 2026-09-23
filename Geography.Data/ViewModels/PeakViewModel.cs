@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.ViewModels;
 
+/// <summary>
+/// View-facing representation of a peak and its parent mountain range.
+/// </summary>
 public partial class PeakViewModel
 {
     [Key]
@@ -18,6 +21,7 @@ public partial class PeakViewModel
 
     public int MountainId { get; set; }
 
+    /// <summary>The mountain range that contains this peak.</summary>
     [ForeignKey("MountainId")]
     [InverseProperty("Peaks")]
     public virtual MountainViewModel Mountain { get; set; } = null!;

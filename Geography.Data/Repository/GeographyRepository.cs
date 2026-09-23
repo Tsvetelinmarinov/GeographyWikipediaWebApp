@@ -1,11 +1,22 @@
-﻿using Geography.Data.Context;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Geography.Data.Context;
 using Geography.Data.Models;
+using Geography.Data.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.Repository
 {
-    public class GeographyRepository(GeographyContext dbContext) : IRepository
+    /// <summary>
+    /// Implements geography data queries through Entity Framework Core and maps country results to view models.
+    /// </summary>
+    public class GeographyRepository(GeographyContext dbContext, IMapper autoMapper) : IRepository
     {
+        #region ContinentsService Logic
+
+        /// <summary>
+        /// Retrieves all continents in code order, including their countries, without tracking entities.
+        /// </summary>
         public IEnumerable<Continent> GetAllContinents()
         {
             return dbContext
@@ -14,6 +25,9 @@ namespace Geography.Data.Repository
                 .Include((continent) => continent.Countries)
                 .OrderBy((continent) => continent.ContinentCode);
         }
+        /// <summary>
+        /// Retrieves one continent by code or throws when no matching record exists.
+        /// </summary>
         public Continent FindContinentById(string continentCode)
         {
             var continent = dbContext
@@ -25,6 +39,9 @@ namespace Geography.Data.Repository
 
             return continent;
         }
+        /// <summary>
+        /// Loads the countries of a continent with their many-to-many mountain and river relationships.
+        /// </summary>
         public IEnumerable<Country> ExtractContinentCountriesWithAllData(Continent continent)
         {
             var continentEntity = dbContext
@@ -40,6 +57,30 @@ namespace Geography.Data.Repository
             return continentEntity.Countries;
         }
 
+        #endregion
+        #region CountriesService Logic
+
+        /// <summary>
+        /// Loads countries and their navigation properties, then projects them to view models.
+        /// </summary>
+        public IEnumerable<CountryViewModel> GetAllCountries()
+        {
+            var countries = dbContext
+                .Countries
+                .AsNoTracking()
+                .Include((country) => country.ContinentCodeNavigation)
+                .Include((country) => country.CurrencyCodeNavigation)
+                .Include((country) => country.Mountains)
+                .Include((country) => country.Rivers);
+
+            return autoMapper.Map<IEnumerable<CountryViewModel>>(countries);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Releases the database context owned by this repository instance.
+        /// </summary>
         public void Dispose()
         {
             GC.SuppressFinalize(this);

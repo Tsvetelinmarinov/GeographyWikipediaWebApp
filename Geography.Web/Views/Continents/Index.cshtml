@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<ContinentViewModel>
 @{
+    // Continent directory with a route to each continent's related country list.
     ViewData["Title"] = "Continents";
 }
 
@@ -12,6 +13,7 @@
     </div>
 
     <div class="table-wrapper">
+        @* Render a table only when the controller supplied continent records. *@
         @if (Model != null && Model.Any())
         {
             <table class="continents-table">

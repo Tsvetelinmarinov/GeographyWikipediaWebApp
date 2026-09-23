@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@* Shared application shell for global assets, navigation, view content, and optional page scripts. *@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,5 +19,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/scripts.js"></script>
+    @await RenderSectionAsync("Scripts", required: false);
 </body>
 </html>
