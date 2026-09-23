@@ -1,11 +1,14 @@
-﻿using Geography.Data.Context;
+﻿using AutoMapper;
+using Geography.Data.Context;
 using Geography.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.Repository
 {
-    public class GeographyRepository(GeographyContext dbContext) : IRepository
+    public class GeographyRepository(GeographyContext dbContext, IMapper autoMapper) : IRepository
     {
+        #region ContinentsService Logic
+
         public IEnumerable<Continent> GetAllContinents()
         {
             return dbContext
@@ -39,6 +42,8 @@ namespace Geography.Data.Repository
 
             return continentEntity.Countries;
         }
+
+        #endregion
 
         public void Dispose()
         {
