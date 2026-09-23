@@ -1,4 +1,4 @@
-﻿using Geography.Services.Continent;
+﻿using Geography.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Geography.Web.Controllers

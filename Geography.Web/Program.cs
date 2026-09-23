@@ -4,8 +4,9 @@
 
 using Geography.Data.Context;
 using Geography.Data.Repository;
+using Geography.Services;
 using Geography.Services.AutoMapper;
-using Geography.Services.Continent;
+using Geography.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
