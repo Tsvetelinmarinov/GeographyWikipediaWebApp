@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using Geography.Data.Repository;
+using Geography.Services.Interfaces;
 using Geography.Services.ViewModels;
 
-namespace Geography.Services.Continent
+namespace Geography.Services
 {
     public class ContinentsService(IRepository database, IMapper autoMapper) : IContinentsService
     {
         public IEnumerable<CountryViewModel> ExtractContinentCountriesWithAllData(ContinentViewModel continentModel)
         {
-            var continentEntity = autoMapper.Map<Geography.Data.Models.Continent>(continentModel);
+            var continentEntity = autoMapper.Map<Data.Models.Continent>(continentModel);
             var countryEntities = database.ExtractContinentCountriesWithAllData(continentEntity);
 
             if (countryEntities is null || countryEntities.Any() is false)

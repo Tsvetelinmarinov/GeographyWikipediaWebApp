@@ -1,6 +1,6 @@
 ﻿using Geography.Services.ViewModels;
 
-namespace Geography.Services.Continent
+namespace Geography.Services.Interfaces
 {
     public interface IContinentsService
     {
