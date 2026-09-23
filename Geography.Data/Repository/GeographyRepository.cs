@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Geography.Data.Context;
 using Geography.Data.Models;
+using Geography.Data.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.Repository
@@ -41,6 +43,22 @@ namespace Geography.Data.Repository
                 ?? throw new InvalidDataException("There is no continent whit that code in the database!");
 
             return continentEntity.Countries;
+        }
+
+        #endregion
+        #region CountriesService Logic
+
+        public IEnumerable<CountryViewModel> GetAllCountries()
+        {
+            var countries = dbContext
+                .Countries
+                .AsNoTracking()
+                .Include((country) => country.ContinentCodeNavigation)
+                .Include((country) => country.CurrencyCodeNavigation)
+                .Include((country) => country.Mountains)
+                .Include((country) => country.Rivers);
+
+            return autoMapper.Map<IEnumerable<CountryViewModel>>(countries);
         }
 
         #endregion
