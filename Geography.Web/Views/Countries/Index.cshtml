@@ -1,9 +1,11 @@
 ﻿@model IEnumerable<CountryViewModel>
 
 @{
+    // Full country directory page; the table itself is rendered by a shared partial view.
     ViewData["Title"] = "Countries";
 }
 
+@* Styles used exclusively by the country directory. *@
 <link rel="stylesheet" href="~/css/countries.css" />
 
 <main class="country-page">
@@ -32,6 +34,7 @@
                 <span class="country-pill country-pill--blue">@Model.Count().ToString("N0")</span>
             </div>
 
+            @* A second horizontal scrollbar for wide country-table columns. *@
             <div class="country-table-top-scroll" aria-label="Scroll table horizontally">
                 <div class="country-table-top-scroll-track"></div>
             </div>
@@ -43,6 +46,7 @@
 
 @section Scripts{
     <script>
+        // Keep both horizontal scrollbars aligned after the country table is rendered.
         document.addEventListener("DOMContentLoaded", function () {
             const topScroll = document.querySelector(".country-table-top-scroll");
             const topTrack = document.querySelector(".country-table-top-scroll-track");

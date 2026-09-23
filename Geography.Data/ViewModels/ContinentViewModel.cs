@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.ViewModels;
 
+/// <summary>
+/// View-facing representation of a continent and its countries.
+/// </summary>
 public partial class ContinentViewModel
 {
     [Key]
@@ -16,6 +19,7 @@ public partial class ContinentViewModel
     [StringLength(50)]
     public string ContinentName { get; set; } = null!;
 
+    /// <summary>Countries exposed for this continent.</summary>
     [InverseProperty("ContinentCodeNavigation")]
     public virtual ICollection<CountryViewModel> Countries { get; set; } = new List<CountryViewModel>();
 }

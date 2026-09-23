@@ -5,8 +5,14 @@ using Geography.Data.ViewModels;
 
 namespace Geography.Services
 {
+    /// <summary>
+    /// Coordinates continent queries and maps repository entities to view models.
+    /// </summary>
     public class ContinentsService(IRepository database, IMapper autoMapper) : IContinentsService
     {
+        /// <summary>
+        /// Retrieves the countries of a continent with their geographic collections populated.
+        /// </summary>
         public IEnumerable<CountryViewModel> ExtractContinentCountriesWithAllData(ContinentViewModel continentModel)
         {
             var continentEntity = autoMapper.Map<Data.Models.Continent>(continentModel);
@@ -26,12 +32,20 @@ namespace Geography.Services
 
             return countryModels;
         }
+        
+        /// <summary>
+        /// Finds a continent by code and maps it to a view model.
+        /// </summary>
         public ContinentViewModel FindContinentById(string continentCode)
         {
             var continent = database.FindContinentById(continentCode);
             var continentModel = autoMapper.Map<ContinentViewModel>(continent);
             return continentModel;
         }
+        
+        /// <summary>
+        /// Retrieves all continents and maps each database entity to a view model.
+        /// </summary>
         public IEnumerable<ContinentViewModel> GetAllContinents()
         {
             var continentEntities = database.GetAllContinents();

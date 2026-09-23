@@ -1,4 +1,5 @@
 :root {
+    /* Responsive styles for the countries directory and its wide data table. */
     --country-ink: #172033;
     --country-muted: #697386;
     --country-soft: #f4f7fb;

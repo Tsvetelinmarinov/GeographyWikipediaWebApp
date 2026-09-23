@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.ViewModels;
 
+/// <summary>
+/// View-facing representation of a river and the countries associated with it.
+/// </summary>
 public partial class RiverViewModel
 {
     [Key]
@@ -23,6 +26,7 @@ public partial class RiverViewModel
     [StringLength(50)]
     public string Outflow { get; set; } = null!;
 
+    /// <summary>Countries through which this river flows.</summary>
     [ForeignKey("RiverId")]
     [InverseProperty("Rivers")]
     public virtual ICollection<CountryViewModel> CountryCodes { get; set; } = new List<CountryViewModel>();

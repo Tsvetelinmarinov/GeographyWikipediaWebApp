@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Geography.Data.Models;
 
+/// <summary>
+/// Represents a country, its identifiers, geographic measurements, and related geography records.
+/// </summary>
 public partial class Country
 {
     [Key]
@@ -35,18 +38,22 @@ public partial class Country
     [Unicode(false)]
     public string Capital { get; set; } = null!;
 
+    /// <summary>The continent selected by <see cref="ContinentCode"/>.</summary>
     [ForeignKey("ContinentCode")]
     [InverseProperty("Countries")]
     public virtual Continent ContinentCodeNavigation { get; set; } = null!;
 
+    /// <summary>The optional currency selected by <see cref="CurrencyCode"/>.</summary>
     [ForeignKey("CurrencyCode")]
     [InverseProperty("Countries")]
     public virtual Currency? CurrencyCodeNavigation { get; set; }
 
+    /// <summary>Mountain ranges that extend through this country.</summary>
     [ForeignKey("CountryCode")]
     [InverseProperty("CountryCodes")]
     public virtual ICollection<Mountain> Mountains { get; set; } = new List<Mountain>();
 
+    /// <summary>Rivers that flow through this country.</summary>
     [ForeignKey("CountryCode")]
     [InverseProperty("CountryCodes")]
     public virtual ICollection<River> Rivers { get; set; } = new List<River>();

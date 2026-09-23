@@ -4,8 +4,14 @@ using Geography.Data.Models;
 
 namespace Geography.Data.AutoMapper
 {
+    /// <summary>
+    /// Defines the AutoMapper profiles used to convert between database entities and view models.
+    /// </summary>
     public class Mapper : Profile
     {
+        /// <summary>
+        /// Registers the two-way mappings used by the application.
+        /// </summary>
         public Mapper()
         {
             #region Continent -> ContinentViewModel Mapping

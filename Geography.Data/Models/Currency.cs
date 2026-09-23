@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Geography.Data.Models;
 
+/// <summary>
+/// Represents a currency that may be assigned to one or more countries.
+/// </summary>
 public partial class Currency
 {
     [Key]
@@ -16,6 +19,7 @@ public partial class Currency
     [StringLength(200)]
     public string Description { get; set; } = null!;
 
+    /// <summary>Countries that use this currency.</summary>
     [InverseProperty("CurrencyCodeNavigation")]
     public virtual ICollection<Country> Countries { get; set; } = new List<Country>();
 }
