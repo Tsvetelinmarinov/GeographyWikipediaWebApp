@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CountryViewModel>
+
+<div class="country-table-wrap">
+    <table class="country-table">
+        <thead>
+            <tr>
+                <th scope="col">Country code</th>
+                <th scope="col">ISO code</th>
+                <th scope="col">Country name</th>
+                <th scope="col">Currency code</th>
+                <th scope="col">Continent code</th>
+                <th scope="col">Population</th>
+                <th scope="col">Area</th>
+                <th scope="col">Capital</th>
+                <th scope="col">Continent name</th>
+                <th scope="col">Currency description</th>
+                <th scope="col">Mountains</th>
+                <th scope="col">Rivers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() is 0)
+            {
+                <tr>
+                    <td colspan="12" class="country-empty-state" data-label="">No countries are available to display.</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var country in Model)
+                {
+                    <tr>
+                        <td data-label="Country code">
+                            <span class="country-value country-value--large">@country.CountryCode</span>
+                        </td>
+                        <td data-label="ISO code">
+                            <span class="country-value">@country.IsoCode</span>
+                        </td>
+                        <td data-label="Country name">
+                            <span class="country-value country-value--large">@country.CountryName</span>
+                        </td>
+                        <td data-label="Currency code">
+                            @if (string.IsNullOrWhiteSpace(country.CurrencyCode))
+                            {
+                                <span class="country-pill country-pill--empty">Not specified</span>
+                            }
+                            else
+                            {
+                                <span class="country-pill">@country.CurrencyCode</span>
+                            }
+                        </td>
+                        <td data-label="Continent code">
+                            <span class="country-value">@country.ContinentCode</span>
+                        </td>
+                        <td data-label="Population">
+                            <span class="country-value">@country.Population.ToString("N0")</span>
+                        </td>
+                        <td data-label="Area">
+                            <span class="country-value">@country.AreaInSqKm.ToString("N0")</span>
+                            <span class="country-subvalue">km²</span>
+                        </td>
+                        <td data-label="Capital">
+                            @if (string.IsNullOrWhiteSpace(country.Capital))
+                            {
+                                <span class="country-value">Not specified</span>   
+                            }
+                            else
+                            {
+                                <span class="country-value">@country.Capital</span>
+                            }
+                        </td>
+                        <td data-label="Continent navigation">
+                            @if (country.ContinentCodeNavigation is null)
+                            {
+                                <span class="country-pill country-pill--empty">Not specified</span>
+                            }
+                            else
+                            {
+                                <span class="country-pill country-pill--blue">@country.ContinentCodeNavigation.ContinentName</span>
+                            }
+                        </td>
+                        <td data-label="Currency navigation">
+                            @if (country.CurrencyCodeNavigation is null)
+                            {
+                                <span class="country-pill country-pill--empty">Not specified</span>
+                            }
+                            else
+                            {
+                                <span class="country-pill country-pill--blue">@country.CurrencyCodeNavigation.Description</span>
+                            }
+                        </td>
+                        <td data-label="Mountains">
+                            <div class="country-collection">
+                                <div class="country-collection-summary">
+                                    <span class="country-count">@(country.Mountains?.Count ?? 0)</span>
+                                    <span class="country-collection-label">mountains</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-label="Rivers">
+                            <div class="country-collection">
+                                <div class="country-collection-summary">
+                                    <span class="country-count">@(country.Rivers?.Count ?? 0)</span>
+                                    <span class="country-collection-label">rivers</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

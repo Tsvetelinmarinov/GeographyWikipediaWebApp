@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<GeographyContext>();
 builder.Services.AddScoped<IRepository, GeographyRepository>();
 builder.Services.AddScoped<IContinentsService, ContinentsService>();
+builder.Services.AddScoped<ICountriesService, CountriesService>();
 builder.Services.AddAutoMapper(config => config.AddProfile<Mapper>());
 
 var app = builder.Build();

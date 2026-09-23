@@ -1,0 +1,85 @@
+﻿@model IEnumerable<CountryViewModel>
+
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<link rel="stylesheet" href="~/css/countries.css" />
+
+<main class="country-page">
+    <div class="country-shell">
+        <header class="country-hero">
+            <div>
+                <p class="country-eyebrow">Geography directory</p>
+                <h1 class="country-title">Countries of the world</h1>
+                <p class="country-intro">
+                    Browse each country’s identifiers, population, area, capital, related continent and currency data,
+                    plus the number of associated mountains and rivers.
+                </p>
+            </div>
+
+            <div class="country-code-badge" aria-label="Number of countries">
+                <strong>@Model.Count().ToString("N0")</strong>
+                <span>countries</span>
+            </div>
+        </header>
+
+        <section class="country-card" aria-labelledby="countries-table-title">
+            <div class="country-card-heading">
+                <div>
+                    <h2 id="countries-table-title">Countries</h2>
+                </div>
+                <span class="country-pill country-pill--blue">@Model.Count().ToString("N0")</span>
+            </div>
+
+            <div class="country-table-top-scroll" aria-label="Scroll table horizontally">
+                <div class="country-table-top-scroll-track"></div>
+            </div>
+
+            <partial name="_CountriesPageTablePartial" model="Model"/>
+        </section>
+    </div>
+</main>
+
+@section Scripts{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const topScroll = document.querySelector(".country-table-top-scroll");
+            const topTrack = document.querySelector(".country-table-top-scroll-track");
+            const tableWrap = document.querySelector(".country-table-wrap");
+
+            if (!topScroll || !topTrack || !tableWrap) {
+                return;
+            }
+
+            function updateTopSliderWidth() {
+                topTrack.style.width = tableWrap.scrollWidth + "px";
+            }
+
+            let isSynchronizing = false;
+
+            topScroll.addEventListener("scroll", function () {
+                if (isSynchronizing) {
+                    return;
+                }
+
+                isSynchronizing = true;
+                tableWrap.scrollLeft = topScroll.scrollLeft;
+                isSynchronizing = false;
+            });
+
+            tableWrap.addEventListener("scroll", function () {
+                if (isSynchronizing) {
+                    return;
+                }
+
+                isSynchronizing = true;
+                topScroll.scrollLeft = tableWrap.scrollLeft;
+                isSynchronizing = false;
+            });
+
+            window.addEventListener("resize", updateTopSliderWidth);
+            updateTopSliderWidth();
+        });
+    </script>
+}
