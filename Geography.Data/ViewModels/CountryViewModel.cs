@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Geography.Services.ViewModels;
+namespace Geography.Data.ViewModels;
 
 public partial class CountryViewModel
 {

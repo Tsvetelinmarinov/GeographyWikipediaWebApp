@@ -1,4 +1,4 @@
-﻿using Geography.Services.ViewModels;
+﻿using Geography.Data.ViewModels;
 
 namespace Geography.Services.Interfaces
 {

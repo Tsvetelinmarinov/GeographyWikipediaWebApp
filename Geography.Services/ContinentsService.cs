@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Geography.Data.Repository;
 using Geography.Services.Interfaces;
-using Geography.Services.ViewModels;
+using Geography.Data.ViewModels;
 
 namespace Geography.Services
 {
