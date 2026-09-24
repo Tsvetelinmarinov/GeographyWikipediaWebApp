@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Geography.Data.Context;
 using Geography.Data.Models;
 using Geography.Data.ViewModels;
